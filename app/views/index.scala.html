@@ -1,0 +1,17 @@
+@main("Server status") {
+    <script type="text/javascript">
+        $.serverObserver.enable({
+            url: "/ping",
+            frequency: 4999,
+            onServerOnline: function() {
+                $("h1").css("background", "green");
+            },
+            onServerOffline: function() {
+                $("h1").css("background", "red");
+            }
+        });
+    </script>
+    <h1>Server status ?</h1>
+    <p>Server sends randomly 200 (online) or 500 (offline) HTTP status to simulate server connectivity.</p>
+
+}
