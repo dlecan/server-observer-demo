@@ -1,3 +1,21 @@
 body {
     font-family: sans-serif;
 }
+
+.unknown:after {
+    content: "";
+}
+
+.online {
+    background: green;
+}
+.online:after {
+    content: "Online!";
+}
+
+.offline {
+    background: red;
+}
+.offline:after {
+    content: "Offline!";
+}

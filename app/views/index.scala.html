@@ -1,17 +1,25 @@
 @main("Server status") {
     <script type="text/javascript">
+           
+        function showSpan() { 
+            $("span").removeClass("online").removeClass("offline").addClass("unknown");
+            $("span").show();
+        }
+    
         $.serverObserver.enable({
             url: "/ping",
-            frequency: 4999,
+            frequency: 3000,
             onServerOnline: function() {
-                $("h1").css("background", "green");
+                $("span").removeClass("unknown").removeClass("offline").addClass("online");
+                $("span").fadeOut(2000, showSpan); 
             },
             onServerOffline: function() {
-                $("h1").css("background", "red");
+                $("span").removeClass("unknown").removeClass("online").addClass("offline");
+                $("span").fadeOut(2000, showSpan); 
             }
         });
     </script>
-    <h1>Server status ?</h1>
+    <h1>Server status ? <span id="status" class="unknown"></span></h1>
     <p>Server sends randomly 200 (online) or 500 (offline) HTTP status to simulate server connectivity.</p>
 
 }
